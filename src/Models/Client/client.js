@@ -8,4 +8,4 @@ const clientSchema = new Schema({
     active: {type: Boolean, default: true}
 })
 
-export default model('Client', userSchema);
+export default model('Client', clientSchema);
