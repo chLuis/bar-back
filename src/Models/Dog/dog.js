@@ -16,7 +16,8 @@ const dogSchema = new Schema({
     castrated: {type: Boolean},
     typeOfCut: {type: String},
     typeOfShampoo: {type: String},
-    description: {type: String}
+    description: {type: String},
+    image: {type: String}
 })
 
 export default model('Dog', dogSchema);
