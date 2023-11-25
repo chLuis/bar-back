@@ -11,6 +11,7 @@ const dogSchema = new Schema({
     enemies: {type: Object},
     rotation: {type: Number, required: [true, 'rotation is required']},
     disease: {type: String},
+    disability: {type: String},
     allergy: {type: String},
     temper: {type: String},
     castrated: {type: Boolean},
