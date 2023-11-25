@@ -24,7 +24,7 @@ export const getDog = async (req, res) => {
 
 export const patchDog = async (req, res) => {
     try {
-        const dog = await Dog.findByIdAndUpdate(req.params.id, req.body, {
+        const dog = await Dog.findByIdAndUpdate(req.body._id, { $set: req.body}, {
             new: true,
         });
         res.status(200).json(dog);
