@@ -24,7 +24,8 @@ const dogSchema = new Schema({
     paymentMode: {type: String},
     jumper: {type: Boolean},
     ownerStay: {type: Boolean},
-    balance: {type: Number}
+    balance: {type: Number},
+    lastVisit: {type: Date}
 })
 
 export default model('Dog', dogSchema);
