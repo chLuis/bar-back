@@ -2,8 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./src/Database/config.js";
-import routerFood from './src/Routes/FoodRoutes/index.js'
-import routerDrink from './src/Routes/DrinkRoutes/index.js'
 import routerDog from './src/Routes/DogRoutes/index.js'
 
 const app = express();
@@ -19,8 +17,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 dotenv.config();
 
-app.use('/food', routerFood);
-app.use('/drink', routerDrink)
 app.use('/dog', routerDog)
 
 
