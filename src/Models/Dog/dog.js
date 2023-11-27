@@ -18,7 +18,13 @@ const dogSchema = new Schema({
     typeOfCut: {type: String},
     typeOfShampoo: {type: String},
     description: {type: String},
-    image: {type: String}
+    image: {type: String},
+    photo: {type: Boolean},
+    video: {type: Boolean},
+    paymentMode: {type: String},
+    jumper: {type: Boolean},
+    ownerStay: {type: Boolean},
+    balance: {type: Number}
 })
 
 export default model('Dog', dogSchema);
