@@ -25,7 +25,7 @@ const dogSchema = new Schema({
     jumper: {type: Boolean},
     ownerStay: {type: Boolean},
     balance: {type: Number},
-    lastVisit: {type: Date}
+    lastVisit: {type: Array}
 })
 
 export default model('Dog', dogSchema);
