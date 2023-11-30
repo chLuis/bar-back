@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectDB } from "./src/Database/config.js";
 import routerDog from './src/Routes/DogRoutes/index.js'
+import routerPeluTurno from './src/Routes/PeluTurnoRoutes/index.js'
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.json());
 dotenv.config();
 
 app.use('/dog', routerDog)
+app.use('/peluturno', routerPeluTurno)
 
 
 connectDB();

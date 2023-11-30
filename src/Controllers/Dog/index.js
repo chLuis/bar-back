@@ -1,9 +1,7 @@
 import Dog from "../../Models/Dog/dog.js";
 
 export const postDog = async (req, res) => {
-    console.log(req.body)
     try {
-        const dogNew = req.body;
         const dog = await Dog.create(req.body);
         res.status(201).json(dog);
         
