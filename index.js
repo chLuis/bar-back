@@ -4,6 +4,7 @@ import cors from "cors";
 import { connectDB } from "./src/Database/config.js";
 import routerDog from './src/Routes/DogRoutes/index.js'
 import routerPeluTurno from './src/Routes/PeluTurnoRoutes/index.js'
+import routerUser from './src/Routes/UserRoutes/index.js'
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ dotenv.config();
 
 app.use('/dog', routerDog)
 app.use('/peluturno', routerPeluTurno)
+app.use('/user', routerUser)
 
 
 connectDB();
