@@ -1,9 +1,38 @@
 import Dog from "../../Models/Dog/dog.js";
+import { S3 } from '@aws-sdk/client-s3'
+import dotenv from 'dotenv'
+
+dotenv.config();
+
+
+const AccessKeyId = process.env.AWS_ACCESS_KEY_ID, // reemplaza 'xxxxx' con tu AccessKeyId
+      SecretKey = process.env.AWS_SECRET_ACCESS_KEY;
+
+const creds = {
+  accessKeyId: AccessKeyId,
+  secretAccessKey: SecretKey
+};
+const s3 = new S3({
+        region: 'sa-east-1',
+        credentials: creds
+    });
 
 export const postDog = async (req, res) => {
+
+    //console.log(req.body.image.imageFile.ContentType)
+    if (req.body.image) {
+                s3.putObject({
+                        Bucket: 'awsfoodnext',
+                        Key: req.body.image.imageFile.Key,
+                        Body: Buffer.from(req.body.image.imageFile.Body),
+                        ContentType: req.body.image.imageFile.ContentType,
+                    });
+    }
     try {
-        const dog = await Dog.create(req.body);
-        res.status(201).json(dog);
+        let dog = req.body
+        dog.image = req.body.image.imageFile.Key
+        const newDog = await Dog.create(dog);
+        res.status(201).json(newDog);
         
     } catch (error) {
         res.status(400).json({ message: error.message });
