@@ -44,6 +44,16 @@ export const getDog = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+export const getOneDog = async (req, res) => {
+    console.log("ENTRANDO?")
+    console.log(req.params.id)
+    try {
+        const dog = await Dog.findById(req.params.id);
+        res.status(200).json(dog);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
 
 export const patchDog = async (req, res) => {
     try {
