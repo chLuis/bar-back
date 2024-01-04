@@ -81,6 +81,12 @@ export const patchDog = async (req, res) => {
 export const deleteDog = async (req, res) => {
     try {
         const dog = await Dog.findByIdAndDelete(req.params.id);
+        if (dog.image) {
+            s3.deleteObject({
+                Bucket: "awsfoodnext",
+                Key: dog.image,
+            });
+        }
         res.status(200).json(dog);
     } catch (error) {
         res.status(400).json({ message: error.message });
