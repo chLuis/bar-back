@@ -7,7 +7,7 @@ const dogSchema = new Schema({
     owner: {type: String, required: [true, 'Owner is required']},
     phone: {type: Number, required: [true, 'phone number is required']},
     email: {type: String},
-    enemies: {type: String},
+    enemies: {type: Boolean},
     rotation: {type: Number, required: [true, 'rotation is required']},
     disease: {type: String},
     disability: {type: String},
