@@ -56,6 +56,14 @@ export const getOneDog = async (req, res) => {
 };
 
 export const patchDog = async (req, res) => {
+    if (req.body.image) {
+        s3.putObject({
+            Bucket: "awsfoodnext",
+            Key: req.body.image.imageFile.Key,
+            Body: Buffer.from(req.body.image.imageFile.Body),
+            ContentType: req.body.image.imageFile.ContentType,
+        });
+        req.body.image = req.body.image.imageFile.Key;}
     try {
         const dog = await Dog.findByIdAndUpdate(
             req.body._id,
