@@ -1,10 +1,10 @@
 import express from "express";
-import { postUSer, getUser } from '../../Controllers/User/index.js'
+import { postLenguaUser, getLenguaUser } from '../../Controllers/LenguaUser/index.js'
 
 const router = express.Router();
 
-router.post('/post', postUSer)
-router.get('/get', getUser)
+router.post('/post', postLenguaUser)
+router.post('/get', getLenguaUser)
 // router.patch('/patch/:id', patchPeluTurno)
 // router.delete('/delete/:id', deletePeluTurno)
 

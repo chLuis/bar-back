@@ -1,10 +1,10 @@
 import { Schema, model } from "mongoose";
 
-const UserSchema = new Schema({
+const PeluUserSchema = new Schema({
     name: {type: String, required: [true, "Nombre es requerido"], unique: true},
     password: {type: String, required: [true, "Password es requerido"]},
     admin: {type: Boolean, default: false},
-    estado: {type: Boolean, default: true}
+    state: {type: Boolean, default: false}
 });
 
-export default model("User", UserSchema);
+export default model("PeluUser", PeluUserSchema);
