@@ -3,6 +3,11 @@ import { hashSync, compareSync, genSaltSync  } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const postLenguaUser = async (req, res) => {
+    console.log("postLenguaUser")
+    const userExist = await LenguaUser.findOne(req.body.name)
+    if(userExist){
+        return res.status(400).json({ message: "El usuario ya existe" })
+    }
     try {
         const salt = genSaltSync(12)
         
@@ -20,6 +25,7 @@ export const postLenguaUser = async (req, res) => {
 }
 
 export const getLenguaUser = async (req, res) => {
+    console.log("getLenguaUser")
     //console.log(req.body)
     const { name, password } = req.body;
     try {
@@ -32,11 +38,14 @@ export const getLenguaUser = async (req, res) => {
                 process.env.TOKEN_SECRET,
                 {expiresIn: '7d'});
             const userLog = {user: user.name, admin: user.admin, state: user.state, token: jwToken}
+            //console.log(userLog)
             return res.status(200).json(userLog)
         }
+        console.log("BADDDI")
         return res.status(401).json(`Usuario o contraseña incorrectos`)
     }
     catch (error) {
+        console.log("BAD")
         return res.status(401).json(`Usuario o contraseña incorrectos`)
     }
 }

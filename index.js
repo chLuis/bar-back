@@ -28,7 +28,7 @@ app.use('/peluturno', routerPeluTurno)
 app.use('/lenguauser', routerLenguaUser)
 
 //Routes pages
-app.use('/dogs', routerDogs)
+app.get('/dogs', routerDogs)
 
 connectDB();
 app.listen(8080)

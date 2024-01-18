@@ -4,10 +4,10 @@ import { validationToken } from '../../Authorization/validation.js'
 
 const router = express.Router();
 
-router.post('/post',validationToken, postDog);
-router.get('/get', validationToken, getDog);
-router.get('/get/:id', validationToken, getOneDog);
-router.patch('/patch/:id',validationToken, patchDog);
-router.delete('/delete/:id',validationToken, deleteDog);
+router.post('/post', postDog);
+router.get('/get', getDog);
+router.get('/get/:id', getOneDog);
+router.patch('/patch/:id', patchDog);
+router.delete('/delete/:id', deleteDog);
 
 export default router;

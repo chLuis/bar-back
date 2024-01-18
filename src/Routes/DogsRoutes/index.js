@@ -5,5 +5,4 @@ const router = express.Router();
 
 router.get('/agenda',validationToken);
 
-
 export default router;
