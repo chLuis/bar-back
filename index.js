@@ -6,6 +6,7 @@ import { connectDB } from "./src/Database/config.js";
 import routerDog from './src/Routes/DogRoutes/index.js'
 import routerPeluTurno from './src/Routes/PeluTurnoRoutes/index.js'
 import routerLenguaUser from './src/Routes/LenguaUserRoutes/index.js'
+import routerDogs from "./src/Routes/DogsRoutes/index.js";
 
 const app = express();
 app.use(cors());
@@ -26,6 +27,8 @@ app.use('/dog', routerDog)
 app.use('/peluturno', routerPeluTurno)
 app.use('/lenguauser', routerLenguaUser)
 
+//Routes pages
+app.use('/dogs', routerDogs)
 
 connectDB();
 app.listen(8080)
