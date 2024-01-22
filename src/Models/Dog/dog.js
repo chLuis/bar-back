@@ -25,7 +25,7 @@ const dogSchema = new Schema({
     gender: {type: String},
     balance: {type: Number},
     lastVisit: {type: Array},
-    pause: {type: Boolean},
+    pause: {type: Boolean, default: false},
     birthday: {type: Date}
 })
 
