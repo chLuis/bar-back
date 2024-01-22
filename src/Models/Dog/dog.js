@@ -20,12 +20,12 @@ const dogSchema = new Schema({
     image: {type: Object},
     photo: {type: Boolean},
     video: {type: Boolean},
-    paymentMode: {type: String},
     jumper: {type: Boolean},
     ownerStay: {type: Boolean},
     gender: {type: String},
     balance: {type: Number},
     lastVisit: {type: Array},
+    pause: {type: Boolean},
     birthday: {type: Date}
 })
 
