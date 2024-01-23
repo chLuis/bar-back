@@ -4,7 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import { connectDB } from "./src/Database/config.js";
 import routerDog from './src/Routes/DogRoutes/index.js'
-import routerPeluTurno from './src/Routes/PeluTurnoRoutes/index.js'
+import routerLenguaTurno from './src/Routes/LenguaTurnoRoutes/index.js'
 import routerLenguaUser from './src/Routes/LenguaUserRoutes/index.js'
 import routerDogs from "./src/Routes/DogsRoutes/index.js";
 
@@ -24,7 +24,7 @@ app.use(express.json());
 dotenv.config();
 
 app.use('/dog', routerDog)
-app.use('/peluturno', routerPeluTurno)
+app.use('/lenguaturno', routerLenguaTurno)
 app.use('/lenguauser', routerLenguaUser)
 
 //Routes pages
