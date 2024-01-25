@@ -45,10 +45,11 @@ export const getDog = async (req, res) => {
     }
 };
 export const getOneDog = async (req, res) => {
-    //console.log("ENTRANDO?")
-    //console.log(req.params.id)
+    console.log("ENTRANDO?")
+    console.log(req.params.id)
     try {
         const dog = await Dog.findById(req.params.id);
+        console.log(dog)
         res.status(200).json(dog);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -56,6 +57,8 @@ export const getOneDog = async (req, res) => {
 };
 
 export const patchDog = async (req, res) => {
+    //console.log(req.body)
+    const newDog = req.body;
     if (req.body.image) {
         s3.putObject({
             Bucket: "awsfoodnext",
@@ -63,15 +66,25 @@ export const patchDog = async (req, res) => {
             Body: Buffer.from(req.body.image.imageFile.Body),
             ContentType: req.body.image.imageFile.ContentType,
         });
-        req.body.image = req.body.image.imageFile.Key;}
+        req.body.image = req.body.image.imageFile.Key;
+    }
+
     try {
+        if(req.body.lastVisit){
+            //console.log("hay nueva fecha")
+            const dogOld = await Dog.findById(req.body._id);
+            const dogOldVisit = dogOld.lastVisit;
+            newDog.lastVisit.push(...dogOldVisit);
+        }
         const dog = await Dog.findByIdAndUpdate(
-            req.body._id,
+            //req.body._id,
+            newDog,
             { $set: req.body },
             {
                 new: true,
             }
         );
+        //console.log(dog)
         res.status(200).json(dog);
     } catch (error) {
         res.status(400).json({ message: error.message });
