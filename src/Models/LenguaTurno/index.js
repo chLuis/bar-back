@@ -7,6 +7,7 @@ const LenguaTurnoSchema = new Schema({
     hour: {type: String, required: [true, "Horario es requerido"]},
     duration: {type: Number, required: [true, "Duración es requerido"]},
     typeService: {type: String, required: [true, "Tipo de servicio es requerido"]},
+    phone: {type: Number},
     price: {type: Number},
     payment: {type: String}
 })
