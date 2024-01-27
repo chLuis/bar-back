@@ -46,10 +46,10 @@ export const getDog = async (req, res) => {
 };
 export const getOneDog = async (req, res) => {
     console.log("ENTRANDO?")
-    console.log(req.params.id)
+    //console.log(req.params.id)
     try {
         const dog = await Dog.findById(req.params.id);
-        console.log(dog)
+        //console.log(dog)
         res.status(200).json(dog);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -58,7 +58,7 @@ export const getOneDog = async (req, res) => {
 
 export const patchDog = async (req, res) => {
     //console.log(req.body)
-    const newDog = req.body;
+    let newDog = req.body;
     if (req.body.image) {
         s3.putObject({
             Bucket: "awsfoodnext",
@@ -70,22 +70,44 @@ export const patchDog = async (req, res) => {
     }
 
     try {
-        if(req.body.lastVisit){
-            console.log("hay nueva fecha")
-            const dogOld = await Dog.findById(req.body._id);
-            const dogOldVisit = dogOld.lastVisit ? dogOldVisit : [];
-            newDog.lastVisit.push(...dogOldVisit);
+        if(req.body.lastVisit){ //Verifica si hay pedido de LastVisit
+            //console.log("hay nueva fecha")
+            const { lastVisit } = await Dog.findById(req.body._id); //Busca la anterior
+            const dogOldVisit = lastVisit ? lastVisit : []; //Verifica el valor
+            dogOldVisit[0] = req.body.lastVisit[0]; //Remplaza el primer elemento del array por la nueva fecha
+            newDog.lastVisit = [...dogOldVisit]; //Modifica todo el req.body.lastVisit para que conserve viejas fechas menos la ultima porque se la esta modificando
         }
         const dog = await Dog.findByIdAndUpdate(
-            //req.body._id,
             newDog,
             { $set: req.body },
             {
                 new: true,
             }
         );
-        //console.log(dog)
         res.status(200).json(dog);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+export const patchDogOnlyLastVisit = async (req, res) => { // Agrega una nueva visita
+    const newDog = req.body;
+    newDog.lastVisit = [newDog.lastVisit]; //convierte en array al req.body.lastVisit
+    try {
+        if(req.body.lastVisit){
+            const { lastVisit } = await Dog.findById(req.body._id); // trae los valores de lastVisit antiguos
+            const dogOldVisit = lastVisit ? lastVisit : []; // verifica si hay valores antiguos o crea un array vacio en su lugar
+            newDog.lastVisit.push(...dogOldVisit); // agrega los valores antiguos al array nuevo
+            const dog = await Dog.findByIdAndUpdate(
+                newDog,
+                { $set: req.body },
+                {
+                    new: true,
+                }
+            );
+            return res.status(200).json(dog);
+        }
+        return
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
