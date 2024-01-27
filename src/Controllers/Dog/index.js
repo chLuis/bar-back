@@ -71,9 +71,9 @@ export const patchDog = async (req, res) => {
 
     try {
         if(req.body.lastVisit){
-            //console.log("hay nueva fecha")
+            console.log("hay nueva fecha")
             const dogOld = await Dog.findById(req.body._id);
-            const dogOldVisit = dogOld.lastVisit;
+            const dogOldVisit = dogOld.lastVisit ? dogOldVisit : [];
             newDog.lastVisit.push(...dogOldVisit);
         }
         const dog = await Dog.findByIdAndUpdate(
