@@ -92,7 +92,7 @@ export const patchDog = async (req, res) => {
 
 export const patchDogOnlyLastVisit = async (req, res) => { // Agrega una nueva visita
     const newDog = req.body;
-    newDog.lastVisit = [newDog.lastVisit]; //convierte en array al req.body.lastVisit
+    //newDog.lastVisit = [newDog.lastVisit]; //convierte en array al req.body.lastVisit
     try {
         if(req.body.lastVisit){
             const { lastVisit } = await Dog.findById(req.body._id); // trae los valores de lastVisit antiguos
