@@ -3,8 +3,9 @@ import { hashSync, compareSync, genSaltSync  } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const postLenguaUser = async (req, res) => {
-    console.log("postLenguaUser")
-    const userExist = await LenguaUser.findOne(req.body.name)
+    //console.log("postLenguaUser")
+    //console.log(req.body)
+    const userExist = await LenguaUser.findOne({name: req.body.name})
     if(userExist){
         return res.status(400).json({ message: "El usuario ya existe" })
     }
@@ -25,7 +26,7 @@ export const postLenguaUser = async (req, res) => {
 }
 
 export const getLenguaUser = async (req, res) => {
-    console.log("getLenguaUser")
+    //console.log("getLenguaUser")
     //console.log(req.body)
     const { name, password } = req.body;
     try {
