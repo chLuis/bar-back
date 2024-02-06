@@ -7,6 +7,7 @@ import routerDog from './src/Routes/DogRoutes/index.js'
 import routerLenguaTurno from './src/Routes/LenguaTurnoRoutes/index.js'
 import routerLenguaUser from './src/Routes/LenguaUserRoutes/index.js'
 import routerDogs from "./src/Routes/DogsRoutes/index.js";
+import routerProducts from "./src/Routes/ProductRoutes/index.js";
 
 const app = express();
 app.use(cors());
@@ -26,6 +27,7 @@ dotenv.config();
 app.use('/dog', routerDog)
 app.use('/lenguaturno', routerLenguaTurno)
 app.use('/lenguauser', routerLenguaUser)
+app.use('/product', routerProducts)
 
 //Routes pages
 app.get('/dogs', routerDogs)
