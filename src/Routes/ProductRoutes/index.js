@@ -6,11 +6,11 @@ import { postPretal, getPretal, getOnePretal, deletePretal, patchPretal} from '.
 
 const router = express.Router()
 
-router.post('/', postProduct)
-router.get('/', getProducts)
-router.get('/:id', getOneProduct)
-router.patch('/:id', patchProduct)
-router.delete('/:id', deleteProduct)
+router.post('/product', postProduct)
+router.get('/product', getProducts)
+router.get('/product/:id', getOneProduct)
+router.patch('/product/:id', patchProduct)
+router.delete('/product/:id', deleteProduct)
 
 router.post('/collar/', postCollar)
 router.get('/collar/', getCollar)
