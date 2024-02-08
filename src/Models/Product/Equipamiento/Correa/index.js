@@ -1,9 +1,9 @@
 import { Schema, model } from "mongoose";
 
 const CorreaSchema = new Schema({
-    large: {
-        type: Number,
-        required: [true, "Largo es requerido"]
+    size: {
+        type: String,
+        required: [true, "Tamaño/Largo es requerido"]
     },
     print: {
         type: Boolean,

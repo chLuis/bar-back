@@ -3,14 +3,14 @@ import { Schema, model } from 'mongoose';
 const Product = new Schema({
     name: {
         type: String,
-        required: true
+        required: [true, "Nombre es requerido"]
     },
     id_Product: {
         type: Array
     },
-    size: {
-        type: String,
-    },
+    // size: {
+    //     type: String,
+    // },
     price_small: {
         type: Number,
     },
@@ -25,10 +25,14 @@ const Product = new Schema({
     },
     description: {
         type: String,
-        required: true
+        required: [true, "Descripción es requerida"]
     },
     image: {
         type: Array
+    },
+    type: {
+        type: String,
+        required: [true, "Tipo de producto es requerido"]
     }
 })
 
