@@ -14,8 +14,7 @@ const CollarSchema = new Schema({
         required: [true, "Color es requerido"]
     },
     price: {
-        type: Number,
-        required: [true, "Precio es requerido"]
+        type: Number
     },
     stock: {
         type: Number,
@@ -29,6 +28,10 @@ const CollarSchema = new Schema({
     },
     material:{
         type: String,
+    },
+    id_Product: {
+        type: String,
+        required: [true, "id Producto es requerido"]
     }
 })
 

@@ -34,9 +34,9 @@ export const getOnePretal = async (req, res) => { // trae un correa por id (Los 
 }
 
 export const patchPretal = async (req, res) => {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     let newProduct = req.body;
-    console.log(newProduct)
+    //console.log(newProduct)
     try {
         const {stock} = await Pretal.findById(req.params.id);
         const addOrDeletePretal = req.body.stock;
