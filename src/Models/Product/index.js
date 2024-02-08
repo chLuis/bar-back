@@ -11,9 +11,17 @@ const Product = new Schema({
     size: {
         type: String,
     },
-    price: {
+    price_small: {
         type: Number,
-        required: true
+    },
+    price_medium: {
+        type: Number,
+    },
+    price_large: {
+        type: Number,
+    },
+    price_xl: {
+        type: Number,
     },
     description: {
         type: String,
