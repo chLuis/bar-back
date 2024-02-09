@@ -3,6 +3,8 @@ import { postProduct, getProducts, getOneProduct, deleteProduct, patchProduct } 
 import { postCollar, getCollar, getOneCollar, deleteCollar, patchCollar } from '../../Controllers/Product/Equipamiento/Collar/index.js'
 import { postCorrea, getCorrea, getOneCorrea, deleteCorrea, patchCorrea } from '../../Controllers/Product/Equipamiento/Correa/index.js'
 import { postPretal, getPretal, getOnePretal, deletePretal, patchPretal} from '../../Controllers/Product/Equipamiento/Pretal/index.js'
+import { postAccesorios, getAccesorios, getOneAccesorios, deleteAccesorios, patchAccesorios } from '../../Controllers/Product/Accesorios/Accesorios/index.js'
+import { postRopa, getRopa, getOneRopa, deleteRopa, patchRopa } from '../../Controllers/Product/Accesorios/Ropa/index.js'
 
 const router = express.Router()
 
@@ -30,6 +32,17 @@ router.get('/pretal/:id', getOnePretal)
 router.patch('/pretal/:id', patchPretal)
 router.delete('/pretal/:id', deletePretal)
 
+router.post('/accesorios/', postAccesorios)
+router.get('/accesorios/', getAccesorios)
+router.get('/accesorios/:id', getOneAccesorios)
+router.patch('/accesorios/:id', patchAccesorios)
+router.delete('/accesorios/:id', deleteAccesorios)
+
+router.post('/ropa/', postRopa)
+router.get('/ropa/', getRopa)
+router.get('/ropa/:id', getOneRopa)
+router.patch('/ropa/:id', patchRopa)
+router.delete('/ropa/:id', deleteRopa)
 
 
 export default router
