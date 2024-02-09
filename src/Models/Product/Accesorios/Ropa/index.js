@@ -1,21 +1,21 @@
 import { Schema, model } from "mongoose";
 
 const RopaSchema = new Schema({
-    nombre: {
+    name: {
         type: String,
-        required: true,
+        required: [true, "Nombre es requerido"],
     },
-    precio: {
+    price: {
         type: Number,
-        required: true,
+        required: [true, "Precio es requerido"],
     },
-    imagen: {
+    image: {
         type: Array,
-        required: true,
+        required: [true, "Imagen es requerida"],
     },
-    descripcion: {
+    description: {
         type: String,
-        required: true,
+        required: [true, "Descripción es requerida"],
     },
     stock: {
         type: Number,
