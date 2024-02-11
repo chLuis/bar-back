@@ -18,7 +18,7 @@ const RopaSchema = new Schema({
         required: [true, "Descripción es requerida"],
     },
     stock: {
-        type: Number,
+        type: Array,
     },
     id_Product: {
         type: String,
