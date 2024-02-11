@@ -34,20 +34,26 @@ export const getOneRopa = async (req, res) => { // trae un correa por id (Los co
 }
 
 export const patchRopa = async (req, res) => {
-    //console.log(req.params.id)
-    let newProduct = req.body;
-    //console.log(newProduct)
+    console.log(req.params.id)
+    let newProduct = await req.body;
+    console.log(newProduct)
     try {
-        const {stock} = await Ropa.findById(req.params.id);
+        const {stock} = await Ropa.findById(req.params.id); // [{talle: "s", stock: 2}, {talle: "m", stock: 1}]
         const addOrDeleteRopa = req.body.stock;
-        const stockRopa = stock + addOrDeleteRopa;
-        newProduct.stock = stockRopa;
-        console.log(newProduct)
+        console.log(addOrDeleteRopa)
+        const updateStock = stock.map((item) => {
+            const newStock = addOrDeleteRopa.find((stockForSize) => stockForSize.size === item.size);
+            const updateStockForSize = newStock ? item.stock + newStock.stock : item.stock;
+            return {size: item.size, stock: updateStockForSize}
+        })
+        //const stockRopa = stock + addOrDeleteRopa;
+        newProduct.stock = updateStock;
+        //console.log(newProduct)
         const ropa = await Ropa.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },
             { new: true }
-        );
+         );
         res.status(200).json(ropa);
     } catch (error) {
         res.status(400).json({ message: error.message });
