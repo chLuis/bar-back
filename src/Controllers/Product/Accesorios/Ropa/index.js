@@ -34,9 +34,9 @@ export const getOneRopa = async (req, res) => { // trae un correa por id (Los co
 }
 
 export const patchRopa = async (req, res) => {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     let newProduct = await req.body;
-    console.log(newProduct)
+    //console.log(newProduct)
     try {
         const {stock} = await Ropa.findById(req.params.id); // [{talle: "s", stock: 2}, {talle: "m", stock: 1}]
         const addOrDeleteRopa = req.body.stock;
