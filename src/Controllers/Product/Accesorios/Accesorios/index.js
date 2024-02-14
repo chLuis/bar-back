@@ -42,7 +42,7 @@ export const patchAccesorios = async (req, res) => {
         const addOrDeleteAccesorios = req.body.stock;
         const stockAccesorios = stock + addOrDeleteAccesorios;
         newProduct.stock = stockAccesorios;
-        console.log(newProduct)
+        //console.log(newProduct)
         const accesorios = await Accesorios.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },

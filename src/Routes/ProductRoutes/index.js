@@ -5,6 +5,7 @@ import { postCorrea, getCorrea, getOneCorrea, deleteCorrea, patchCorrea } from '
 import { postPretal, getPretal, getOnePretal, deletePretal, patchPretal} from '../../Controllers/Product/Equipamiento/Pretal/index.js'
 import { postAccesorios, getAccesorios, getOneAccesorios, deleteAccesorios, patchAccesorios } from '../../Controllers/Product/Accesorios/Accesorios/index.js'
 import { postRopa, getRopa, getOneRopa, deleteRopa, patchRopa } from '../../Controllers/Product/Accesorios/Ropa/index.js'
+import { postCosmetica, getCosmetica, getOneCosmetica, deleteCosmetica, patchCosmetica } from '../../Controllers/Product/Cosmetica/index.js'
 
 const router = express.Router()
 
@@ -44,5 +45,10 @@ router.get('/ropa/:id', getOneRopa)
 router.patch('/ropa/:id', patchRopa)
 router.delete('/ropa/:id', deleteRopa)
 
+router.post('/cosmetica/', postCosmetica)
+router.get('/cosmetica/', getCosmetica)
+router.get('/cosmetica/:id', getOneCosmetica)
+router.patch('/cosmetica/:id', patchCosmetica)
+router.delete('/cosmetica/:id', deleteCosmetica)
 
 export default router
