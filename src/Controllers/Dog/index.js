@@ -19,7 +19,7 @@ const s3 = new S3({
 export const postDog = async (req, res) => {
     //console.log(req.body.image.imageFile.ContentType)
     let dog = req.body;
-    console.log(req.body)
+    //console.log(req.body)
     if (req.body.image !== "") {
         s3.putObject({
             Bucket: "awsfoodnext",
