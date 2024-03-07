@@ -42,7 +42,7 @@ export const patchCosmetica = async (req, res) => {
         const addOrDeleteCosmetica = req.body.stock;
         const stockCosmetica = stock + addOrDeleteCosmetica;
         newProduct.stock = stockCosmetica;
-        console.log(newProduct)
+        //console.log(newProduct)
         const cosmetica = await Cosmetica.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },
