@@ -33,6 +33,12 @@ const Product = new Schema({
     type: {
         type: String,
         required: [true, "Tipo de producto es requerido"]
+    },
+    price: {
+        type: Number
+    },
+    stock: {
+        type: Number
     }
 })
 

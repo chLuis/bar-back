@@ -38,6 +38,11 @@ export const getOneProduct = async (req, res) => {
 export const patchProduct = async (req, res) => {
     let newProduct = req.body;
     try {
+        const {stock} = await Product.findById(req.params.id);
+        console.log(stock)
+        const addOrDeleteProduct = req.body.stock;
+        const stockProduct = stock + addOrDeleteProduct;
+        newProduct.stock = stockProduct;
         const product = await Product.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },
