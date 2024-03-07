@@ -42,7 +42,7 @@ export const patchPretal = async (req, res) => {
         const addOrDeletePretal = req.body.stock;
         const stockPretal = stock + addOrDeletePretal;
         newProduct.stock = stockPretal;
-        console.log(newProduct)
+        //console.log(newProduct)
         const pretal = await Pretal.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },
