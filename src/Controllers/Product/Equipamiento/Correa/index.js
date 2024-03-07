@@ -34,15 +34,15 @@ export const getOneCorrea = async (req, res) => { // trae un correa por id (Los 
 }
 
 export const patchCorrea = async (req, res) => {
-    console.log(req.params.id)
+    //console.log(req.params.id)
     let newProduct = req.body;
-    console.log(newProduct)
+    //console.log(newProduct)
     try {
         const {stock} = await Correa.findById(req.params.id);
         const addOrDeleteCorrea = req.body.stock;
         const stockCorrea = stock + addOrDeleteCorrea;
         newProduct.stock = stockCorrea;
-        console.log(newProduct)
+        //console.log(newProduct)
         const correa = await Correa.findByIdAndUpdate(
             req.params.id,
             { $set: newProduct },

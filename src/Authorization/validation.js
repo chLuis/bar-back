@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export const validationToken = (req, res, next) => {
-    console.log("ENTRANDO")
+    //console.log("ENTRANDO")
     const token = req.headers.authorization?.split(" ")[1];
     const tokenSinComillas = token.replace(/"/g, '');
     //console.log(tokenSinComillas)

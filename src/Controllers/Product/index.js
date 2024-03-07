@@ -39,7 +39,7 @@ export const patchProduct = async (req, res) => {
     let newProduct = req.body;
     try {
         const {stock} = await Product.findById(req.params.id);
-        console.log(stock)
+        //console.log(stock)
         const addOrDeleteProduct = req.body.stock;
         const stockProduct = stock + addOrDeleteProduct;
         newProduct.stock = stockProduct;

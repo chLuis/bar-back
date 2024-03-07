@@ -46,7 +46,7 @@ export const getDog = async (req, res) => {
     }
 };
 export const getOneDog = async (req, res) => {
-    console.log("ENTRANDO?")
+    //console.log("ENTRANDO?")
     //console.log(req.params.id)
     try {
         const dog = await Dog.findById(req.params.id);
