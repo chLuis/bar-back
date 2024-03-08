@@ -20,6 +20,12 @@ const Product = new Schema({
     price_xl: {
         type: Number,
     },
+    price: {
+        type: Number,
+    },
+    stock: {
+        type: Number,
+    },
     description: {
         type: String,
         required: [true, "Descripción es requerida"]
@@ -30,13 +36,7 @@ const Product = new Schema({
     type: {
         type: String,
         required: [true, "Tipo de producto es requerido"]
-    },
-    // price: {
-    //     type: Number
-    // },
-    // stock: {
-    //     type: Number
-    // }
+    }
 })
 
 export default model ("Product", Product)
