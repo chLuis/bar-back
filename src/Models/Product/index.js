@@ -8,9 +8,6 @@ const Product = new Schema({
     id_Product: {
         type: Array
     },
-    // size: {
-    //     type: String,
-    // },
     price_small: {
         type: Number,
     },
