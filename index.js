@@ -8,6 +8,7 @@ import routerLenguaTurno from './src/Routes/LenguaTurnoRoutes/index.js'
 import routerLenguaUser from './src/Routes/LenguaUserRoutes/index.js'
 import routerDogs from "./src/Routes/DogsRoutes/index.js";
 import routerProducts from "./src/Routes/ProductRoutes/index.js";
+import routerAccounting from './src/Routes/AccountingRoutes/index.js'
 
 const app = express();
 app.use(cors());
@@ -28,6 +29,7 @@ app.use('/dog', routerDog)
 app.use('/lenguaturno', routerLenguaTurno)
 app.use('/lenguauser', routerLenguaUser)
 app.use('/product', routerProducts)
+app.use('/accounting', routerAccounting)
 
 //Routes pages
 app.get('/dogs', routerDogs)
