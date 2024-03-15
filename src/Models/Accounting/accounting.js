@@ -6,6 +6,7 @@ const AccountingSchema = new Schema({
     category: {type: String, required: [true, 'Category is required']},
     type: {type: String, required: [true, 'Type is required']},
     description: {type: String},
+    section: {type: String},
     date: {
         type: {
             year: { type: Number, required: true },
