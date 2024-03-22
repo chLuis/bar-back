@@ -36,11 +36,10 @@ export const patchAccounting = async (req, res) => {
     let newAccounting = req.body;
     try {
         const accounting = await Accounting.findByIdAndUpdate(
-            newAccounting,
-            { $set: req.body },
-            {
-                new: true,
-            });
+            req.params.id,
+            { $set: newAccounting },
+            { new: true,}
+        );
         res.status(200).json(accounting);
     } catch (error) {
         res.status(400).json({ message: error.message });
